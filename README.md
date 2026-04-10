@@ -1,1 +1,1 @@
-site avaible on domain https://kelsi.qzz.io
+site available on domain https://kelsi.qzz.io
