@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор прибыли Playerok</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Расчет чистой прибыли</h2>
+        
+        <div class="input-group">
+            <label>Сумма закупки (₽)</label>
+            <input type="number" id="buyPrice" placeholder="Например, 100">
+        </div>
+
+        <div class="input-group">
+            <label>Цена продажи (₽)</label>
+            <input type="number" id="sellPrice" placeholder="Например, 500">
+        </div>
+
+        <button onclick="calculate()">Рассчитать</button>
+
+        <div class="result" id="resultBlock" style="display: none;">
+            <p>Комиссия сервиса (20% + 6%): <span id="feeAmount">0</span> ₽</p>
+            <p>Чистая прибыль: <strong id="finalProfit">0</strong> ₽</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
