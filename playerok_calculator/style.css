@@ -92,4 +92,25 @@ button:active {
     font-size: 18px;
 }
 
+small {
+    display: block;
+    margin-top: 5px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.result p {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+}
+
+.result p:last-child {
+    border-bottom: none;
+}
+
 #feeAmount { color: #f87171; } /* Красный оттенок для комиссий */
