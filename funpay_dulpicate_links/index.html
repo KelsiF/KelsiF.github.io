@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=108670326', 'ym');
+
+        ym(108670326, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108670326" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дубликатор ссылок FunPay — KelsiDev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f0a1a;
+            --card-bg: #1a1429;
+            --accent-pink: #ff00ff;
+            --text-main: #ffffff;
+            --text-secondary: #b1a7c1;
+            --border: #2e2444;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top, #251642 0%, #0f0a1a 60%) fixed;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 30px 16px 50px;
+        }
+
+        .wrap {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .back {
+            display: inline-block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+
+        .back:hover { color: var(--accent-pink); }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-pink);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--accent-pink);
+            margin-bottom: 6px;
+        }
+
+        .sub {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin: 18px 0 6px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--bg-color);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font: inherit;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-pink);
+            box-shadow: 0 0 0 3px rgba(255, 0, 255, 0.15);
+        }
+
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+            white-space: pre;
+            overflow: auto;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 0.85rem;
+        }
+
+        .row { display: flex; gap: 14px; }
+        .row > div { flex: 1; }
+
+        .btns {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--accent-pink);
+            color: white;
+            border: 1px solid var(--accent-pink);
+        }
+
+        button:hover { opacity: 0.8; }
+
+        button.sec {
+            background: transparent;
+            color: var(--text-main);
+            border-color: var(--border);
+        }
+
+        button.sec:hover {
+            border-color: var(--accent-pink);
+            opacity: 1;
+        }
+
+        .meta {
+            margin-top: 8px;
+            min-height: 1.4em;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .meta.err { color: #ff6b81; }
+        .meta.ok { color: #5eead4; }
+
+        @media (max-width: 480px) {
+            .card { padding: 22px; }
+            .row { flex-direction: column; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <a class="back" href="../">← На главную</a>
+
+        <div class="card">
+            <h1>Дубликатор ссылок FunPay</h1>
+            <p class="sub">Вставьте ссылку, укажите количество — получите список для копирования.</p>
+
+            <label for="link">Ссылка</label>
+            <input id="link" type="text" placeholder="https://funpay.com/lots/offer?id=..." autocomplete="off">
+
+            <div class="row">
+                <div>
+                    <label for="count">Количество</label>
+                    <input id="count" type="number" min="1" max="10000" value="10">
+                </div>
+                <div>
+                    <label for="sep">Разделитель</label>
+                    <select id="sep">
+                        <option value="\n">Новая строка</option>
+                        <option value=" ">Пробел</option>
+                        <option value=", ">Запятая</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="btns">
+                <button id="gen">Сгенерировать</button>
+                <button id="copy" class="sec">Копировать</button>
+                <button id="clear" class="sec">Очистить</button>
+            </div>
+
+            <label for="out">Результат</label>
+            <textarea id="out" readonly placeholder="Здесь появится результат..."></textarea>
+            <div id="meta" class="meta"></div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var link = document.getElementById('link'),
+                count = document.getElementById('count'),
+                sep = document.getElementById('sep'),
+                out = document.getElementById('out'),
+                meta = document.getElementById('meta');
+            var MAX = 10000;
+
+            function say(msg, cls) {
+                meta.textContent = msg;
+                meta.className = 'meta ' + (cls || '');
+            }
+
+            function generate() {
+                var url = link.value.trim();
+                var n = parseInt(count.value, 10);
+                if (!url) { say('Введите ссылку.', 'err'); return false; }
+                if (!n || n < 1) { say('Количество должно быть не меньше 1.', 'err'); return false; }
+                if (n > MAX) { n = MAX; count.value = MAX; }
+                var s = sep.value === '\\n' ? '\n' : sep.value;
+                out.value = new Array(n).fill(url).join(s);
+                say('Готово: ' + n + ' шт.', 'ok');
+                return true;
+            }
+
+            async function copy() {
+                if (!out.value && !generate()) return;
+                try {
+                    await navigator.clipboard.writeText(out.value);
+                } catch (e) {
+                    out.removeAttribute('readonly');
+                    out.select();
+                    document.execCommand('copy');
+                    out.setAttribute('readonly', '');
+                }
+                say('Скопировано в буфер обмена', 'ok');
+            }
+
+            document.getElementById('gen').onclick = generate;
+            document.getElementById('copy').onclick = copy;
+            document.getElementById('clear').onclick = function () {
+                link.value = '';
+                out.value = '';
+                say('');
+                link.focus();
+            };
+            [link, count].forEach(function (el) {
+                el.addEventListener('keydown', function (e) { if (e.key === 'Enter') generate(); });
+            });
+            sep.addEventListener('change', function () { if (out.value) generate(); });
+        })();
+    </script>
+</body>
+</html>

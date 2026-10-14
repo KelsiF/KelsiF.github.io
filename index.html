@@ -253,6 +253,10 @@
                     <h3>Калькулятор прибыли Playerok</h3>
                     <p>Web utility</p>
                 </div>
+                <div class="project-card" onclick="openModal('Дубликатор ссылок FunPay', 'Инструмент для быстрого размножения ссылки: вставляете ссылку, указываете количество и копируете результат.', 'funpay_duplicate_links/', 'Go')">
+                    <h3>Дубликатор ссылок FunPay</h3>
+                    <p>Web utility</p>
+                </div>
             </div>
         </section>
 
@@ -277,10 +281,11 @@
     </div>
 
     <script>
-        function openModal(title, desc, link) {
+        function openModal(title, desc, link, btnText) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDesc').innerText = desc;
             document.getElementById('modalLink').href = link;
+            document.getElementById('modalLink').innerText = btnText || 'Download';
             document.getElementById('modalOverlay').style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Запрещаем прокрутку
         }
